@@ -1,0 +1,31 @@
+<div>
+  <header><h1>Online Quiz</h1></header>
+  <input type="button" value="Start quiz" (click)="loadQuiz()" *ngIf="flagButton">
+  <div class="container align-content-center" *ngIf="flagQuestion">
+    <div *ngFor="let q of questions;let i = index;" class="m-3">
+      <div class="card p-3 bg-light" align="left">
+        <div class="card-body fs-4">
+          {{q.question}}
+          </div>
+          <div class="row md-6 pl-5 fs-5">
+            <label class="font-weight-normal">
+              <input type="radio" name="{{q.question}}" id=1 class="ml-1" (change)="isSelected($event, 0, i)"> {{q.answers[0]}} 
+            </label>
+            <label class="font-weight-normal">
+              <input type="radio" name="{{q.question}}" id=2 class="ml-1" (change)="isSelected($event, 1, i)"> {{q.answers[1]}} 
+            </label>
+            <label class="font-weight-normal">
+              <input type="radio" name="{{q.question}}" id=3 class="ml-1" (change)="isSelected($event, 2, i)"> {{q.answers[2]}} 
+            </label>
+            <label class="font-weight-normal">
+              <input type="radio" name="{{q.question}}" id=4 class="ml-1" (change)="isSelected($event, 3, i)"> {{q.answers[3]}} 
+            </label>    
+          </div>
+        </div>
+    </div>
+    <input type="button" value="Submit" (click)="onSubmit()" *ngIf="flagQuestion">
+    <div *ngIf="last">
+      <h2>Your Score is 10</h2>
+      {{score}}
+    </div>
+</div>
